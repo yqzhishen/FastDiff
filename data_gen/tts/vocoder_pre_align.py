@@ -1,4 +1,5 @@
 import os
+import shutil
 
 os.environ["OMP_NUM_THREADS"] = "1"
 
@@ -52,7 +53,8 @@ class VocoderPreAlign:
     def process(self):
         set_hparams()
         processed_dir = self.processed_dir
-        subprocess.check_call(f'rm -rf {processed_dir}/mfa_inputs', shell=True)
+        shutil.rmtree(f'{processed_dir}/mfa_inputs', ignore_errors=True)
+        # subprocess.check_call(f'rm -rf {processed_dir}/mfa_inputs', shell=True)
         os.makedirs(f"{processed_dir}/wav_inputs", exist_ok=True)
         meta_df = []
 
@@ -93,7 +95,11 @@ class VocoderPreAlign:
         os.makedirs(f'{processed_dir}/mfa_inputs/{group}', exist_ok=True)
         ext = os.path.splitext(wav_fn)[1]
         new_wav_fn = f"{processed_dir}/mfa_inputs/{group}/{idx:07d}_{item_name}{ext}"
-        cp_cmd = 'mv' if 'wav_inputs' in wav_fn else 'cp'
-        subprocess.check_call(f'{cp_cmd} "{wav_fn}" "{new_wav_fn}"', shell=True)
+        if 'wav_inputs' in wav_fn:
+            shutil.move(wav_fn, new_wav_fn)
+        else:
+            shutil.copy(wav_fn, new_wav_fn)
+        # cp_cmd = 'mv' if 'wav_inputs' in wav_fn else 'cp'
+        # subprocess.check_call(f'{cp_cmd} "{wav_fn}" "{new_wav_fn}"', shell=True)
         wav_fn = new_wav_fn
         return wav_fn

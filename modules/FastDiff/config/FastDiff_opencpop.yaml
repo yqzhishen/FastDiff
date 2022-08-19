@@ -1,0 +1,7 @@
+base_config:
+  - ./base.yaml
+
+audio_sample_rate: 44100
+raw_data_dir: 'data/raw/opencpop'
+processed_data_dir: 'data/processed/opencpop'
+binary_data_dir: 'data/binary/opencpop'

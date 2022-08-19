@@ -1,4 +1,5 @@
 import os
+import shutil
 
 os.environ["OMP_NUM_THREADS"] = "1"
 
@@ -58,7 +59,8 @@ class BasePreAlign:
     def process(self):
         set_hparams()
         processed_dir = self.processed_dir
-        subprocess.check_call(f'rm -rf {processed_dir}/mfa_inputs', shell=True)
+        shutil.rmtree(f'{processed_dir}/mfa_inputs', ignore_errors=True)
+        # subprocess.check_call(f'rm -rf {processed_dir}/mfa_inputs', shell=True)
         os.makedirs(f"{processed_dir}/wav_inputs", exist_ok=True)
         phone_set = set()
         meta_df = []

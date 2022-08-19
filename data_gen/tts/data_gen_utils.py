@@ -36,7 +36,7 @@ def trim_long_silences(path, sr=None, return_raw_wav=False, norm=True, vad_max_s
     ## Voice Activation Detection
     # Window size of the VAD. Must be either 10, 20 or 30 milliseconds.
     # This sets the granularity of the VAD. Should not need to be changed.
-    sampling_rate = 16000
+    sampling_rate = 44100
     wav_raw, sr = librosa.core.load(path, sr=sr)
 
     if norm:

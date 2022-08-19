@@ -126,6 +126,6 @@ class VocoderBinarizer:
         return int(os.getenv('N_PROC', hparams.get('N_PROC', os.cpu_count())))
 
 
+set_hparams()
 if __name__ == "__main__":
-    set_hparams()
     VocoderBinarizer().process()

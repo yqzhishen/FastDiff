@@ -22,7 +22,7 @@ def override_config(old_config: dict, new_config: dict):
             old_config[k] = v
 
 
-def set_hparams(config='', exp_name='', hparams_str='', print_hparams=True, global_hparams=True):
+def set_hparams(config='', exp_name='', hparams_str='', print_hparams=False, global_hparams=True):
     if config == '' and exp_name == '':
         parser = argparse.ArgumentParser(description='')
         parser.add_argument('--config', type=str, default='configs/config_base.yaml',

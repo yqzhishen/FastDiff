@@ -11,6 +11,7 @@ def run_task():
     task_cls.start()
 
 
+set_hparams()
 if __name__ == '__main__':
     try:
         import libtmux
@@ -32,7 +33,6 @@ if __name__ == '__main__':
         setproctitle("python train.py")
     except:
         pass
-    set_hparams()
     try:
         if hparams['rename_tmux'] and not hparams['infer']:
             window.rename_window('_'.join(hparams['exp_name'].split("_")[:-1]))

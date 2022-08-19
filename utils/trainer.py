@@ -401,7 +401,8 @@ class Trainer:
         logging.info(f'Epoch {epoch:05d}@{self.global_step}: saving model to {ckpt_path}')
         self._atomic_save(ckpt_path)
         for old_ckpt in get_all_ckpts(self.work_dir)[self.num_ckpt_keep:]:
-            subprocess.check_call(f'rm -rf "{old_ckpt}"', shell=True)
+            os.remove(old_ckpt)
+            # subprocess.check_call(f'rm -rf "{old_ckpt}"', shell=True)
             logging.info(f'Delete ckpt: {os.path.basename(old_ckpt)}')
         current = None
         if logs is not None and self.monitor_key in logs:

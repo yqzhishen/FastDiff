@@ -27,7 +27,7 @@ class FastDiffTask(VocoderBaseTask):
                  diffusion_step_embed_dim_mid=hparams['diffusion_step_embed_dim_mid'],
                  diffusion_step_embed_dim_out=hparams['diffusion_step_embed_dim_out'],
                  use_weight_norm=hparams['use_weight_norm'])
-        utils.print_arch(self.model)
+        # utils.print_arch(self.model)
 
         # Init hyperparameters by linear schedule
         noise_schedule = torch.linspace(float(hparams["beta_0"]), float(hparams["beta_T"]), int(hparams["T"])).cuda()

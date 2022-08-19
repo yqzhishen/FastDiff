@@ -36,7 +36,7 @@ class FastSpeech2Task(TTSBaseTask):
         self.build_tts_model()
         if hparams['load_ckpt'] != '':
             self.load_ckpt(hparams['load_ckpt'], strict=False)
-        utils.print_arch(self.model)
+        # utils.print_arch(self.model)
         return self.model
 
     def _training_step(self, sample, batch_idx, _):

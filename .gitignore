@@ -159,3 +159,7 @@ research/vcpitch3/*
 # Pyre type checker
 .pyre/
 将删除 datasets/remi/test/
+
+
+# Audios
+/wavs

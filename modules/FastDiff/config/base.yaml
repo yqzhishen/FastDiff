@@ -2,12 +2,12 @@
 # Custom dataset preprocess
 #############
 audio_num_mel_bins: 80
-audio_sample_rate: 22050
-hop_size: 256  # For 22050Hz, 275 ~= 12.5 ms (0.0125 * sample_rate)
-win_size: 1024  # For 22050Hz, 1100 ~= 50 ms (If None, win_size: fft_size) (0.05 * sample_rate)
-fmin: 80  # Set this to 55 if your speaker is male! if female, 95 should help taking off noise. (To test depending on dataset. Pitch info: male~[65, 260], female~[100, 525])
-fmax: 7600  # To be increased/reduced depending on data.
-fft_size: 1024  # Extra window size is filled with 0 paddings to match this parameter
+audio_sample_rate: 44100
+hop_size: 512  # For 22050Hz, 275 ~= 12.5 ms (0.0125 * sample_rate)
+win_size: 2048  # For 22050Hz, 1100 ~= 50 ms (If None, win_size: fft_size) (0.05 * sample_rate)
+fmin: 55  # Set this to 55 if your speaker is male! if female, 95 should help taking off noise. (To test depending on dataset. Pitch info: male~[65, 260], female~[100, 525])
+fmax: 8000  # To be increased/reduced depending on data.
+fft_size: 2048  # Extra window size is filled with 0 paddings to match this parameter
 min_level_db: -100
 ref_level_db: 20
 griffin_lim_iters: 60
@@ -21,7 +21,7 @@ mel_vmax: 1.5
 audio_channels: 1
 inner_channels: 32
 cond_channels: 80
-upsample_ratios: [8, 8, 4]
+upsample_ratios: [8, 8, 8]
 lvc_layers_each_block: 4
 lvc_kernel_size: 3
 kpnet_hidden_channels: 64
@@ -48,7 +48,7 @@ N: ''
 task_cls: modules.FastDiff.task.FastDiff.FastDiffTask
 max_updates: 1000000 # max training steps
 max_samples: 25600 # audio length in training
-max_sentences: 20 # max batch size in training
+max_sentences: 10 # max batch size in training
 num_sanity_val_steps: -1
 max_valid_sentences: 1
 valid_infer_interval: 10000
@@ -83,7 +83,7 @@ binarization_args:
   with_word: false
   with_txt: false
   with_f0: false
-  shuffle: false
+  shuffle: true
   with_spk_id: true
   with_f0cwt: false
   with_linear: false
@@ -95,7 +95,7 @@ binarization_args:
 ###########
 # optimization
 ###########
-lr: 2e-4    # learning rate
+lr: 1e-4    # learning rate
 weight_decay: 0
 scheduler: rsqrt # rsqrt|none
 optimizer_adam_beta1: 0.9
