@@ -3,5 +3,5 @@ base_config:
 
 audio_sample_rate: 44100
 raw_data_dir: 'data/raw/vpic'
-processed_data_dir: 'data/raw/vpic'
+processed_data_dir: 'data/processed/vpic'
 binary_data_dir: 'data/binary/vpic'
