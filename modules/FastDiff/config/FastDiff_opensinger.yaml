@@ -1,0 +1,7 @@
+base_config:
+  - ./base.yaml
+
+audio_sample_rate: 44100
+raw_data_dir: 'D:\Vocoder Datasets\OpenSinger_plain'
+processed_data_dir: 'D:\Vocoder Datasets\OpenSinger_processed'
+binary_data_dir: 'D:\Vocoder Datasets\OpenSinger_binary'
